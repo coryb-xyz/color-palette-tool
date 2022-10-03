@@ -49,7 +49,7 @@ export class ColorUtils {
         return unique;
     }
 
-    static #indexColors(source, sort = true, order = 'descending') {
+    static #indexColors(source, sort = true) {
         this.#reduceColors(source, 64);
         const n = {};
         const a = [];
@@ -73,7 +73,19 @@ export class ColorUtils {
             if (a.count > b.count) return 1;
             if (a.count < b.count) return -1;
             return 0;
-        }, order)
+        })
+    }
+
+    static #orderColors(source) {
+        const colors = [];
+        const index = this.#indexColors(source, true);
+
+        for (let i = 0; i < index.length; i++) {
+            const color = index[i];
+            colors.push(color);
+        }
+
+        return colors;
     }
 
     static #hex24ToRGB(hex) {
