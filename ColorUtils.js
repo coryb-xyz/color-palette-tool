@@ -15,6 +15,16 @@ class ColorUtils {
         return distance <= tolerance;
     }
 
+    static different(color, colors, tolerance = 0.01) {
+        for (let i = 0; i < colors.length; i++) {
+            const c = colors[i];
+            if (this.similar(color, c, tolerance)) {
+                false;
+            }
+        }
+        return true;
+    }
+
     static hex24ToRGB(hex) {
         const R = hex >> 16 & 0xFF;
         const G = hex >> 8 & 0xFF;
