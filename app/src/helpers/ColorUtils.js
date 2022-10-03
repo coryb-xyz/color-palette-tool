@@ -49,15 +49,31 @@ export class ColorUtils {
         return unique;
     }
 
-    static #indexColors(source, sort = true, order) {
+    static #indexColors(source, sort = true, order = 'descending') {
         this.#reduceColors(source, 64);
         const n = {};
         const a = [];
         let p;
+
         for (let x = 0; x < source.data.length; x++) {
-            p = this.#rgbToHex(...source.data.slice(x, 3));
+            p = this.#rgbToHex(...source.data.slice(x, x + 3));
             n[p] ? n[p]++ : n[p] = 1;
         }
+
+        for (const color in n) {
+            if (Object.hasOwnProperty.call(n, color)) {
+                const count = n[color];
+                a.push({ color, count })
+            }
+        }
+
+        if (!sort) return a;
+
+        return a.sort((a, b) => {
+            if (a.count > b.count) return 1;
+            if (a.count < b.count) return -1;
+            return 0;
+        }, order)
     }
 
     static #hex24ToRGB(hex) {
