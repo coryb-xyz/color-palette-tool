@@ -27,8 +27,9 @@ export class ColorUtils {
     }
 
     static colorPalette(source, maximum = 16, tolerance = 0.01) {
-        // TODO: finish porting this after working out image loading
-        let copy;
+        console.log("Oooh wee");
+        console.log("Oooh wee");
+
     }
 
 

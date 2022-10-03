@@ -30,6 +30,7 @@
             ctx.drawImage(image, 0, 0, image.width, image.height);
         };
         image.src = src;
+        ColorUtils.colorPalette(image)
     }
 </script>
 
