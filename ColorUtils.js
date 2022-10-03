@@ -25,6 +25,11 @@ class ColorUtils {
         return true;
     }
 
+    static colorPalette(source, maximum = 16, tolerance = 0.01) {
+        // TODO: finish porting this after working out image loading
+        let copy;
+    }
+
     static hex24ToRGB(hex) {
         const R = hex >> 16 & 0xFF;
         const G = hex >> 8 & 0xFF;
