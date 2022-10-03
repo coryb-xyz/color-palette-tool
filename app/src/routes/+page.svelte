@@ -33,12 +33,12 @@
     }
 </script>
 
-
 <canvas
-id="dropzone"
-on:dragover={(e) => e.preventDefault()}
-on:drop={loadImage}
-class="bordered" />
+    id="dropzone"
+    on:dragover={(e) => e.preventDefault()}
+    on:drop={loadImage}
+    class="bordered"
+/>
 
 <style>
     .bordered {
