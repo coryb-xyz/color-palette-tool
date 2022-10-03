@@ -16,9 +16,9 @@
 
     function render(src) {
         const MAX_HEIGHT = 100;
-        var image = new Image();
+        const image = new Image();
         image.onload = (_) => {
-            var canvas = document.getElementById("myCanvas");
+            var canvas = document.getElementById("dropzone");
             if (image.height > MAX_HEIGHT) {
                 image.width *= MAX_HEIGHT / image.height;
                 image.height = MAX_HEIGHT;
@@ -33,16 +33,12 @@
     }
 </script>
 
-<div
-    class="bordered"
-    id="dropzone"
-    on:dragover={(e) => e.preventDefault()}
-    on:drop={loadImage}
->
-    👀
-</div>
 
-<canvas class="bordered" id="myCanvas" />
+<canvas
+id="dropzone"
+on:dragover={(e) => e.preventDefault()}
+on:drop={loadImage}
+class="bordered" />
 
 <style>
     .bordered {
