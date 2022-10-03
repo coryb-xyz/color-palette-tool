@@ -1,9 +1,9 @@
 // @ts-nocheck
 export class ColorUtils {
 
-    static similar(color1, color2, tolerance = 0.01) {
-        const RGB1 = this.hex24ToRGB(color1);
-        const RGB2 = this.hex24ToRGB(color2);
+    static #similar(color1, color2, tolerance = 0.01) {
+        const RGB1 = this.#hex24ToRGB(color1);
+        const RGB2 = this.#hex24ToRGB(color2);
 
         tolerance *= (255 * 255 * 3) << 0;
         
@@ -16,10 +16,10 @@ export class ColorUtils {
         return distance <= tolerance;
     }
 
-    static different(color, colors, tolerance = 0.01) {
+    static #different(color, colors, tolerance = 0.01) {
         for (let i = 0; i < colors.length; i++) {
             const c = colors[i];
-            if (this.similar(color, c, tolerance)) {
+            if (this.#similar(color, c, tolerance)) {
                 false;
             }
         }
@@ -28,12 +28,12 @@ export class ColorUtils {
 
     static colorPalette(source, maximum = 16, tolerance = 0.01) {
         console.log("Oooh wee");
-        console.log("Oooh wee");
+        console.log(source.slice(0,5));
 
     }
 
 
-    static hex24ToRGB(hex) {
+    static #hex24ToRGB(hex) {
         const R = hex >> 16 & 0xFF;
         const G = hex >> 8 & 0xFF;
         const B = hex & 0xFF;
