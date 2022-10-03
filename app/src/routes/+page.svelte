@@ -1,5 +1,6 @@
 <script>
     // @ts-nocheck
+    import { ColorUtils } from "../helpers/ColorUtils.js";
 
     function loadImage(e) {
         e.preventDefault();
@@ -16,7 +17,7 @@
     function render(src) {
         const MAX_HEIGHT = 100;
         var image = new Image();
-        image.onload = _ => {
+        image.onload = (_) => {
             var canvas = document.getElementById("myCanvas");
             if (image.height > MAX_HEIGHT) {
                 image.width *= MAX_HEIGHT / image.height;

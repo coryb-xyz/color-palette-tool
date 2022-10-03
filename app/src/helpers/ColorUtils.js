@@ -1,9 +1,6 @@
-class ColorUtils {
+// @ts-nocheck
+export class ColorUtils {
 
-    /**
-     * @param {any} color1
-     * @param {any} color2
-     */
     static similar(color1, color2, tolerance = 0.01) {
         const RGB1 = this.hex24ToRGB(color1);
         const RGB2 = this.hex24ToRGB(color2);
@@ -19,10 +16,6 @@ class ColorUtils {
         return distance <= tolerance;
     }
 
-    /**
-     * @param {any} color
-     * @param {string | any[]} colors
-     */
     static different(color, colors, tolerance = 0.01) {
         for (let i = 0; i < colors.length; i++) {
             const c = colors[i];
@@ -33,17 +26,12 @@ class ColorUtils {
         return true;
     }
 
-    /**
-     * @param {any} source
-     */
     static colorPalette(source, maximum = 16, tolerance = 0.01) {
         // TODO: finish porting this after working out image loading
         let copy;
     }
 
-    /**
-     * @param {number} hex
-     */
+
     static hex24ToRGB(hex) {
         const R = hex >> 16 & 0xFF;
         const G = hex >> 8 & 0xFF;
