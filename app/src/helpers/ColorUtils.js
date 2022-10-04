@@ -35,7 +35,7 @@ export class ColorUtils {
 
     static colorPalette(source, maximum = 16, tolerance = 0.01) {
         const palette = this.#uniqueColors(this.#orderColors(source), maximum, tolerance);
-        return palette;
+        return palette.map(c => `#${c.color}`);
     }
 
     static #uniqueColors(colors, maximum, tolerance) {
