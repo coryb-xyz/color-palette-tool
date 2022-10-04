@@ -35,7 +35,7 @@ export class ColorUtils {
 
     static colorPalette(source, maximum = 16, tolerance = 0.01) {
         const palette = this.#uniqueColors(this.#orderColors(source), maximum, tolerance);
-        return palette.map(c => `#${c.color}`);
+        return palette.map(c => `#${c.toString(16)}`);
     }
 
     static #uniqueColors(colors, maximum, tolerance) {
@@ -49,7 +49,7 @@ export class ColorUtils {
         return unique;
     }
 
-    static #indexColors(source, sort = true) {
+    static #indexColors(source) {
         const n = {};
         const a = [];
         let p;
@@ -66,18 +66,16 @@ export class ColorUtils {
             }
         }
 
-        if (!sort) return a;
-
         return a.sort((a, b) => {
             if (a.count > b.count) return 1;
             if (a.count < b.count) return -1;
             return 0;
-        })
+        }).map(c => Number(`0x${c.color}`));
     }
 
     static #orderColors(source) {
         const colors = [];
-        const index = this.#indexColors(source, true);
+        const index = this.#indexColors(source);
 
         for (let i = 0; i < index.length; i++) {
             const color = index[i];
