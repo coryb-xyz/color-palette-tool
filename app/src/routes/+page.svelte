@@ -1,6 +1,7 @@
 <script>
     // @ts-nocheck
     import { ColorUtils } from "../helpers/ColorUtils.js";
+    let palette = [];
 
     function loadImage(e) {
         e.preventDefault();
@@ -28,7 +29,7 @@
             canvas.width = image.width;
             canvas.height = image.height;
             ctx.drawImage(image, 0, 0, image.width, image.height);
-            const p = ColorUtils.colorPalette(
+            palette = ColorUtils.colorPalette(
                 ctx.getImageData(0, 0, image.width, image.height)
             );
         };
@@ -42,6 +43,8 @@
     on:drop={loadImage}
     class="bordered"
 />
+
+<div>{JSON.stringify(palette)}</div>
 
 <style>
     .bordered {

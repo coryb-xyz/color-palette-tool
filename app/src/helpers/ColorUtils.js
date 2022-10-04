@@ -54,7 +54,7 @@ export class ColorUtils {
         const a = [];
         let p;
 
-        for (let x = 0; x < source.data.length; x++) {
+        for (let x = 0; x < source.data.length; x += 4) {
             p = this.#rgbToHex(...source.data.slice(x, x + 3));
             n[p] ? n[p]++ : n[p] = 1;
         }
