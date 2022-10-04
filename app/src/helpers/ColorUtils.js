@@ -30,7 +30,7 @@ export class ColorUtils {
         return true;
     }
 
-    static colorPalette(source, maximum = 16, tolerance = 0.01) {
+    static colorPalette(source, maximum = 8, tolerance = 0.01) {
         const palette = this.#uniqueColors(this.#indexColors(source), maximum, tolerance);
         return palette.map(c => `#${c.toString(16)}`);
     }

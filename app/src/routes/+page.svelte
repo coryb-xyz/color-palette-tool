@@ -37,19 +37,52 @@
     }
 </script>
 
-<canvas
-    id="dropzone"
-    on:dragover={(e) => e.preventDefault()}
-    on:drop={loadImage}
-    class="bordered"
-/>
-
-{#each palette as color}
-    <div style={`width: 10vw;height: 10vh; background-color: ${color};`}></div>
-    <div>{color}</div>
-{/each}
+<div class="main-wrapper">
+    <canvas
+        id="dropzone"
+        on:dragover={(e) => e.preventDefault()}
+        on:drop={loadImage}
+        class="bordered"
+    />
+    <div class="color-wrapper">
+        {#each palette as color}
+            <div>
+                <div
+                    style={`width: 10vw;height: 10vh; background-color: ${color};`}
+                />
+                <div>{color}</div>
+            </div>
+        {/each}
+    </div>
+</div>
 
 <style>
+    .main-wrapper {
+        display: grid;
+        grid-template-columns: 25vw 75vw;
+    }
+
+    .color-wrapper {
+        --grid-layout-gap: 0px;
+        --grid-column-count: 10;
+        --grid-item--min-width: 1vw;
+
+        --gap-count: calc(var(--grid-column-count) - 1);
+        --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+        --grid-item--max-width: calc(
+            (100% - var(--total-gap-width)) / var(--grid-column-count)
+        );
+
+        display: grid;
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(
+                max(var(--grid-item--min-width), var(--grid-item--max-width)),
+                1fr
+            )
+        );
+        grid-gap: var(--grid-layout-gap);
+    }
     .bordered {
         width: 20vw;
         height: 20vh;
