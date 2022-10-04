@@ -48,7 +48,7 @@
         {#each palette as color}
             <div>
                 <div
-                    style={`width: 10vw;height: 10vh; background-color: ${color};`}
+                    style={`width:10vw; height:10vh; background-color: ${color};`}
                 />
                 <div>{color}</div>
             </div>
@@ -63,25 +63,8 @@
     }
 
     .color-wrapper {
-        --grid-layout-gap: 0px;
-        --grid-column-count: 10;
-        --grid-item--min-width: 1vw;
-
-        --gap-count: calc(var(--grid-column-count) - 1);
-        --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-        --grid-item--max-width: calc(
-            (100% - var(--total-gap-width)) / var(--grid-column-count)
-        );
-
         display: grid;
-        grid-template-columns: repeat(
-            auto-fill,
-            minmax(
-                max(var(--grid-item--min-width), var(--grid-item--max-width)),
-                1fr
-            )
-        );
-        grid-gap: var(--grid-layout-gap);
+        grid-template-columns: 10vw 10vw 10vw 10vw;
     }
     .bordered {
         width: 20vw;
