@@ -16,7 +16,7 @@
     }
 
     function render(src) {
-        const MAX_HEIGHT = 100;
+        const MAX_HEIGHT = 480;
         const image = new Image();
         image.onload = (_) => {
             var canvas = document.getElementById("dropzone");
