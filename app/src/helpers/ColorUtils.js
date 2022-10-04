@@ -1,12 +1,10 @@
 // @ts-nocheck
 export class ColorUtils {
 
-    static #rgbToHex(r, g, b) {
-        return [r, g, b].map(x => {
-            const hex = x.toString(16);
-            return hex.length === 1 ? '0' + hex : hex;
-        }).join('')
-    }
+    static #rgbToHex = (r, g, b) => [r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+    }).join('');
 
     static #similar(color1, color2, tolerance = 0.01) {
         const RGB1 = this.#hex24ToRGB(color1);
