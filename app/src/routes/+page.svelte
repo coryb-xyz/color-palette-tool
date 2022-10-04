@@ -51,9 +51,10 @@
 
 <style>
     .bordered {
-        width: 10vw;
-        height: 10vh;
-        border-color: rgba(96, 96, 96, 255);
+        width: 20vw;
+        height: 20vh;
+        padding: 2px;
+        border-color: rgba(128, 128, 128, 255);
         border-style: dashed;
         font-size: 5vh;
     }
