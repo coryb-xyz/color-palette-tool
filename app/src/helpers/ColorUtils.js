@@ -104,19 +104,6 @@ export class ColorUtils {
         return R << 16 | G << 8 | B;
     }
 
-    static #averageColors(source, colors) {
-        const averages = [];
-        let columns = Math.round(Math.sqrt(colors));
-
-        const w = Math.round(source.width / columns);
-
-        for (let i = 0; i < colors; i+= w) {
-            averages.push(this.#averageColor(source.slice(i, i + w)))   
-        }
-
-        return averages;
-    }
-
     static #hex24ToRGB(hex) {
         const R = hex >> 16 & 0xFF;
         const G = hex >> 8 & 0xFF;
