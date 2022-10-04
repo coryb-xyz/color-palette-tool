@@ -44,7 +44,10 @@
     class="bordered"
 />
 
-<div>{JSON.stringify(palette)}</div>
+{#each palette as color}
+    <div style={`width: 10vw;height: 10vh; background-color: ${color};`}></div>
+    <div>{color}</div>
+{/each}
 
 <style>
     .bordered {
