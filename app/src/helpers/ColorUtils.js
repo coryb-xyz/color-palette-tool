@@ -23,8 +23,7 @@ export class ColorUtils {
 
     static #different(color, colors, tolerance = 0.01) {
         for (let i = 0; i < colors.length; i++) {
-            const c = colors[i];
-            if (this.#similar(color, c, tolerance)) {
+            if (this.#similar(color, colors[i], tolerance)) {
                 false;
             }
         }
