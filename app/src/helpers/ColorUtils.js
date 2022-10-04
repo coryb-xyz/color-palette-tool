@@ -10,7 +10,7 @@ export class ColorUtils {
         const RGB1 = this.#hex24ToRGB(color1);
         const RGB2 = this.#hex24ToRGB(color2);
 
-        tolerance *= (255 * 255 * 3) << 0;
+        tolerance = tolerance * (255 * 255 * 3) << 0;
 
         let distance = 0;
 
@@ -24,7 +24,7 @@ export class ColorUtils {
     static #different(color, colors, tolerance = 0.01) {
         for (let i = 0; i < colors.length; i++) {
             if (this.#similar(color, colors[i], tolerance)) {
-                false;
+                return false;
             }
         }
         return true;
