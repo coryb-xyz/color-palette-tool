@@ -30,7 +30,7 @@
             canvas.height = image.height;
             ctx.drawImage(image, 0, 0, image.width, image.height);
             palette = ColorUtils.colorPalette(
-                ctx.getImageData(0, 0, image.width, image.height)
+                ctx.getImageData(0, 0, image.width, image.height).data
             );
         };
         image.src = src;
