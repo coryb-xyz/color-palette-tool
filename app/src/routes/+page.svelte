@@ -28,7 +28,7 @@
             canvas.width = image.width;
             canvas.height = image.height;
             ctx.drawImage(image, 0, 0, image.width, image.height);
-            ColorUtils.colorPalette(
+            const p = ColorUtils.colorPalette(
                 ctx.getImageData(0, 0, image.width, image.height)
             );
         };

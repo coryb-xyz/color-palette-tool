@@ -50,7 +50,6 @@ export class ColorUtils {
     }
 
     static #indexColors(source, sort = true) {
-        this.#reduceColors(source, 64);
         const n = {};
         const a = [];
         let p;
@@ -90,9 +89,9 @@ export class ColorUtils {
 
     static #averageColor(source) {
         let R, G, B = 0;
-        const n = source.data.length;
-        for (let i = 0; i < source.data.length; i += 4) {
-            const [are, gee, bee] = [...source.data.slice(i, i + 3)]
+        const n = source.length;
+        for (let i = 0; i < source.length; i += 4) {
+            const [are, gee, bee] = [...source.slice(i, i + 3)]
             R += are;
             G += gee;
             B += bee;
@@ -103,6 +102,19 @@ export class ColorUtils {
         B /= n;
 
         return R << 16 | G << 8 | B;
+    }
+
+    static #averageColors(source, colors) {
+        const averages = [];
+        let columns = Math.round(Math.sqrt(colors));
+
+        const w = Math.round(source.width / columns);
+
+        for (let i = 0; i < colors; i+= w) {
+            averages.push(this.#averageColor(source.slice(i, i + w)))   
+        }
+
+        return averages;
     }
 
     static #hex24ToRGB(hex) {
