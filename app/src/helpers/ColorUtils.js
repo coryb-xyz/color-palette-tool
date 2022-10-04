@@ -87,23 +87,6 @@ export class ColorUtils {
         return colors;
     }
 
-    static #averageColor(source) {
-        let R, G, B = 0;
-        const n = source.length;
-        for (let i = 0; i < source.length; i += 4) {
-            const [are, gee, bee] = [...source.slice(i, i + 3)]
-            R += are;
-            G += gee;
-            B += bee;
-        }
-
-        R /= n;
-        G /= n;
-        B /= n;
-
-        return R << 16 | G << 8 | B;
-    }
-
     static #hex24ToRGB(hex) {
         const R = hex >> 16 & 0xFF;
         const G = hex >> 8 & 0xFF;
