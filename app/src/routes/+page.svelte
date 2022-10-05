@@ -2,5 +2,12 @@
     import PaletteWidget from "../components/PaletteWidget.svelte";
 </script>
 
-<PaletteWidget />
+<body>
+    <PaletteWidget />
+</body>
 
+<style>
+    body {
+        font-family: 'JetBrains Mono', monospace;
+    }
+</style>
