@@ -8,6 +8,6 @@
 
 <style>
     body {
-        font-family: 'JetBrains Mono', monospace;
+        font-family: 'Open Sans', sans-serif;
     }
 </style>

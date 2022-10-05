@@ -97,6 +97,7 @@
     .color-wrapper {
         display: grid;
         grid-template-columns: 10vw 10vw 10vw 10vw;
+        font-family: 'JetBrains Mono', monospace;
     }
 
     .bordered {
