@@ -2,9 +2,9 @@
     // @ts-nocheck
     import { ColorUtils } from "../helpers/ColorUtils.js";
     let image;
-    let palette = [];
     let canvas;
     let ctx;
+    let palette = [];
     let tolerance = 1;
     let number = 8;
 
