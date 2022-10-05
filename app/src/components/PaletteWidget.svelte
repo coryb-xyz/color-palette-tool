@@ -45,61 +45,69 @@
     }
 </script>
 
-<body>
-    <div class="main-wrapper">
-        <canvas
-            bind:this={canvas}
-            id="dropzone"
-            on:dragover={(e) => e.preventDefault()}
-            on:drop={loadImage}
-            class="bordered"
-        />
-        <div class="color-wrapper">
-            {#each palette as color}
-                <div>
-                    <div
-                        style={`width:10vw; height:10vh; background-color: ${color};`}
-                    />
-                    <div>{color}</div>
-                </div>
-            {/each}
-        </div>
+<div class="main-wrapper">
+    <canvas
+        bind:this={canvas}
+        id="dropzone"
+        on:dragover={(e) => e.preventDefault()}
+        on:drop={loadImage}
+        class="bordered"
+    />
+    <div class="color-wrapper">
+        {#each palette as color}
+            <div class="color-box">
+                <canvas
+                    class="color-swatch"
+                    style={`background-color: ${color};`}
+                />
+                <div>{color}</div>
+            </div>
+        {/each}
     </div>
+</div>
 
-    <div class="control-area">
-        <label for="tolerance"
-            >Tolerance<input
-                type="number"
-                name="tolerance"
-                bind:value={tolerance}
-                on:change={generatePalette}
-            /></label
-        >
-        <label for="number"
-            >Number of colors<input
-                type="number"
-                name="number"
-                bind:value={number}
-                on:change={generatePalette}
-            /></label
-        >
-    </div>
-
-</body>
+<div class="control-area">
+    <label for="tolerance"
+        >Tolerance<input
+            type="number"
+            name="tolerance"
+            bind:value={tolerance}
+            on:change={generatePalette}
+        /></label
+    >
+    <label for="number"
+        >Number of colors<input
+            type="number"
+            name="number"
+            bind:value={number}
+            on:change={generatePalette}
+        /></label
+    >
+</div>
 
 <style>
     .main-wrapper {
         display: grid;
-        grid-template-columns: 20vw 40vw;
-        gap: 5vw;
+        grid-template-columns: 1fr 3fr;
+        gap: 1vw;
     }
 
     .color-wrapper {
         display: grid;
-        grid-template-columns: 10vw 10vw 10vw 10vw;
-        font-family: 'JetBrains Mono', monospace;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        font-family: "JetBrains Mono", monospace;
     }
 
+    .color-swatch {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+
+    .color-box {
+        display: grid;
+    }
     .bordered {
         width: 20vw;
         height: 20vh;
