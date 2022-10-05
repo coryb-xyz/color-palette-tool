@@ -1,12 +1,15 @@
 <script>
     // @ts-nocheck
     import { ColorUtils } from "../helpers/ColorUtils.js";
+    import { onMount } from "svelte";
     let image;
     let canvas;
     let ctx;
     let palette = [];
     let tolerance = 1;
     let number = 8;
+
+    onMount(async () => (palette = Array(number).fill("#f0f0f0")));
 
     function loadImage(e) {
         e.preventDefault();
@@ -46,50 +49,67 @@
 </script>
 
 <div class="main-wrapper">
-    <canvas
-        bind:this={canvas}
-        id="dropzone"
-        on:dragover={(e) => e.preventDefault()}
-        on:drop={loadImage}
-        class="bordered"
-    />
-    <div class="color-wrapper">
-        {#each palette as color}
-            <div class="color-box">
-                <canvas
-                    class="color-swatch"
-                    style={`background-color: ${color};`}
-                />
-                <div>{color}</div>
-            </div>
-        {/each}
+    <div class="color-input">
+        <canvas
+            bind:this={canvas}
+            id="dropzone"
+            on:dragover={(e) => e.preventDefault()}
+            on:drop={loadImage}
+            class="bordered"
+        />
+        <div class="color-wrapper">
+            {#each palette as color}
+                <div class="color-box">
+                    <canvas
+                        class="color-swatch"
+                        style={`background-color: ${color};`}
+                    />
+                    <div>{color}</div>
+                </div>
+            {/each}
+        </div>
     </div>
-</div>
-
-<div class="control-area">
-    <label for="tolerance"
-        >Tolerance<input
+    <div class="control-area">
+        <div>Tolerance</div>
+        <input
             type="number"
             name="tolerance"
             bind:value={tolerance}
             on:change={generatePalette}
-        /></label
-    >
-    <label for="number"
-        >Number of colors<input
+        />
+        <div>Colors</div>
+        <input
             type="number"
             name="number"
             bind:value={number}
             on:change={generatePalette}
-        /></label
-    >
+        />
+    </div>
 </div>
 
 <style>
     .main-wrapper {
         display: grid;
-        grid-template-columns: 1fr 3fr;
+        gap: 1.5vh;
+        background-color: #f0f0f0;
+        padding: 1.5vh;
+        border-radius: 10px;
+    }
+
+    .color-input {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
         gap: 1vw;
+    }
+
+    .control-area {
+        display: grid;
+        grid-template-columns: repeat(4, min-content);
+        gap: 5px;
+    }
+
+    input {
+        width: 10vw;
     }
 
     .color-wrapper {
@@ -102,19 +122,22 @@
     .color-swatch {
         width: 100%;
         height: 100%;
+        border-color: 808080;
+        border-style: dotted;
+        border-width: 0.1vh;
         border-radius: 5px;
     }
 
     .color-box {
         display: grid;
+        gap: 0.5vh;
     }
     .bordered {
-        width: 20vw;
         height: 20vh;
-        padding: 2px;
-        border-color: rgba(128, 128, 128, 255);
+        width: 40vh;
+        border-color: 808080;
         border-style: dotted;
-        border-radius: 20px;
+        border-radius: 10px;
         border-width: 0.25vh;
         font-size: 5vh;
     }
