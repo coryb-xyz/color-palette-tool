@@ -1,8 +1,10 @@
 <script>
     // @ts-nocheck
     import { ColorUtils } from "../helpers/ColorUtils.js";
+    let image;
     let palette = [];
     let canvas;
+    let ctx;
     let tolerance = 1;
     let number = 8;
 
@@ -18,24 +20,26 @@
         reader.readAsDataURL(imgPath);
     }
 
+    function generatePalette() {
+        const img = ctx.getImageData(0, 0, image.width, image.height).data;
+        palette = ColorUtils.colorPalette(img, number, tolerance / 100);
+    }
+
     function render(src) {
         const MAX_HEIGHT = 480;
-        const image = new Image();
+        image = new Image();
         image.onload = (_) => {
             if (image.height > MAX_HEIGHT) {
                 image.width *= MAX_HEIGHT / image.height;
                 image.height = MAX_HEIGHT;
             }
-            var ctx = canvas.getContext("2d");
+            ctx = canvas.getContext("2d");
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             canvas.width = image.width;
             canvas.height = image.height;
             ctx.drawImage(image, 0, 0, image.width, image.height);
-            palette = ColorUtils.colorPalette(
-                ctx.getImageData(0, 0, image.width, image.height).data,
-                number,
-                tolerance / 100
-            );
+            const img = ctx.getImageData(0, 0, image.width, image.height).data;
+            palette = ColorUtils.colorPalette(img, number, tolerance / 100);
         };
         image.src = src;
     }
@@ -62,9 +66,22 @@
 </div>
 
 <div class="control-area">
-    <label for="tolerance">Tolerance<input type="number" name="tolerance" bind:value={tolerance}></label>
-    <label for="number">Number of colors<input type="number" name="number" bind:value={number}></label>
-
+    <label for="tolerance"
+        >Tolerance<input
+            type="number"
+            name="tolerance"
+            bind:value={tolerance}
+            on:change={generatePalette}
+        /></label
+    >
+    <label for="number"
+        >Number of colors<input
+            type="number"
+            name="number"
+            bind:value={number}
+            on:change={generatePalette}
+        /></label
+    >
 </div>
 
 <style>
