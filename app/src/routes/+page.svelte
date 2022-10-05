@@ -4,16 +4,3 @@
 
 <PaletteWidget />
 
-<hr>
-
-<PaletteWidget />
-
-<hr>
-
-<PaletteWidget />
-
-<hr>
-
-<PaletteWidget />
-
-<hr>
