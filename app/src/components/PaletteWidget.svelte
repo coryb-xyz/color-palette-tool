@@ -3,6 +3,8 @@
     import { ColorUtils } from "../helpers/ColorUtils.js";
     let palette = [];
     let canvas;
+    let tolerance = 1;
+    let number = 8;
 
     function loadImage(e) {
         e.preventDefault();
@@ -30,7 +32,9 @@
             canvas.height = image.height;
             ctx.drawImage(image, 0, 0, image.width, image.height);
             palette = ColorUtils.colorPalette(
-                ctx.getImageData(0, 0, image.width, image.height).data
+                ctx.getImageData(0, 0, image.width, image.height).data,
+                number,
+                tolerance / 100
             );
         };
         image.src = src;
@@ -55,6 +59,12 @@
             </div>
         {/each}
     </div>
+</div>
+
+<div class="control-area">
+    <label for="tolerance">Tolerance<input type="number" name="tolerance" bind:value={tolerance}></label>
+    <label for="number">Number of colors<input type="number" name="number" bind:value={number}></label>
+
 </div>
 
 <style>
