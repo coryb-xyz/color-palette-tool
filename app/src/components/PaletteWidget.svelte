@@ -133,8 +133,7 @@
         gap: 0.5vh;
     }
     .bordered {
-        height: 20vh;
-        width: 40vh;
+        width: 100%;
         border-color: 808080;
         border-style: dotted;
         border-radius: 10px;
