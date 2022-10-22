@@ -5,14 +5,17 @@
 
 <body>
     {#each widgetTracker as _}
-        <PaletteWidget/>
+        <PaletteWidget />
     {/each}
-    <button on:click={() => widgetTracker = [...widgetTracker, 0]}>+</button>
+    <button
+        class="btn-floating btn-large waves-effect waves-light red"
+        on:click={() => (widgetTracker = [...widgetTracker, 0])}>+</button
+    >
 </body>
 
 <style>
     body {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         display: grid;
         gap: 1vh;
     }
