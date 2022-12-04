@@ -17,6 +17,7 @@
         font-family: "Open Sans", sans-serif;
         display: grid;
         gap: 1vh;
+        background-color: #1f1f1f;
     }
     button {
         border-radius: 10px;

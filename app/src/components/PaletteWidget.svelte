@@ -9,7 +9,7 @@
     let tolerance = 1;
     let number = 8;
 
-    onMount(async () => (palette = Array(number).fill("#f0f0f0")));
+    onMount(async () => (palette = Array(number).fill("#4c4c4c")));
 
     function loadImage(e) {
         e.preventDefault();
@@ -91,9 +91,10 @@
     .main-wrapper {
         display: grid;
         gap: 1.5vh;
-        background-color: #f0f0f0;
+        background-color: #4c4c4c;
         padding: 1.5vh;
         border-radius: 10px;
+        color: #e3e3ce;
     }
 
     .color-input {
@@ -122,7 +123,7 @@
     .color-swatch {
         width: 100%;
         height: 100%;
-        border-color: #808080;
+        border-color: #1f1f1f;
         border-style: solid;
         border-width: 0.1vh;
         border-radius: 5px;
@@ -134,7 +135,7 @@
     }
     .bordered {
         width: 100%;
-        border-color: #808080;
+        border-color: #1f1f1f;
         border-style: solid;
         border-radius: 10px;
         border-width: 0.2vh;
