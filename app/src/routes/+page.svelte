@@ -5,13 +5,11 @@
 
 <body>
     {#each widgetTracker as _}
-    <div class="palettewidget">
-        <PaletteWidget />
-    </div>
+        <div class="palettewidget">
+            <PaletteWidget />
+        </div>
     {/each}
-    <button
-        on:click={() => (widgetTracker = [...widgetTracker, 0])}>+</button
-    >
+    <button on:click={() => (widgetTracker = [...widgetTracker, 0])}>+</button>
 </body>
 
 <style>
@@ -35,6 +33,6 @@
     }
 
     .palettewidget {
-        padding: .5vh 1vw;
+        padding: 0.5vh 1vw;
     }
 </style>
