@@ -22,8 +22,16 @@
     }
     button {
         border-radius: 10px;
-        background-color: #e0e0e0;
-        width: 2.5vw;
+        background-color: #4d8a99;
+        width: 5vw;
+        height: 5vh;
+        position: absolute;
+        bottom: 1vh;
+        right: 1vw;
+        border: solid;
+        border-color: #3b6a75;
+        color: white;
+        font-size: x-large;
     }
 
     .palettewidget {
