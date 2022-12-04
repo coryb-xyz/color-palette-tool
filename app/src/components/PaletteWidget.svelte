@@ -122,8 +122,8 @@
     .color-swatch {
         width: 100%;
         height: 100%;
-        border-color: 808080;
-        border-style: dotted;
+        border-color: #808080;
+        border-style: solid;
         border-width: 0.1vh;
         border-radius: 5px;
     }
@@ -134,10 +134,10 @@
     }
     .bordered {
         width: 100%;
-        border-color: 808080;
-        border-style: dotted;
+        border-color: #808080;
+        border-style: solid;
         border-radius: 10px;
-        border-width: 0.25vh;
+        border-width: 0.2vh;
         font-size: 5vh;
     }
 </style>
