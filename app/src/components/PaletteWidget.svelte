@@ -3,6 +3,7 @@
     import { ColorUtils } from "../helpers/ColorUtils.js";
     import { onMount } from "svelte";
     let image;
+    let filePicker;
     let canvas;
     let ctx;
     let palette = [];
@@ -53,14 +54,17 @@
 
 <div class="main-wrapper">
     <div class="color-input">
+        
+        <input type="file" id="filePicker" bind:this={filePicker}>
         <canvas
             bind:this={canvas}
             id="dropzone"
             on:dragover={(e) => e.preventDefault()}
             on:drop={loadImage}
+            on:click={_ => filePicker.click()}
             class="bordered"
         />
-
+    
         <div class="color-wrapper">
             {#each palette as color}
                 <div class="color-box">
@@ -86,6 +90,10 @@
 </div>
 
 <style>
+    #filePicker {
+        display: none;
+    }
+
     .main-wrapper {
         display: grid;
         gap: 1.5vh;
