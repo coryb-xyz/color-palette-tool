@@ -11,7 +11,7 @@
 
     onMount(async () => {
         const ctx = canvas.getContext("2d")
-        ctx.fillText("Drop Image Here", 50, 50);
+        ctx.fillText("Drop Image Here", canvas.width / 2.8, canvas.height / 2);
     });
 
     function loadImage(e) {
