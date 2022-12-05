@@ -9,7 +9,10 @@
     let tolerance = 1;
     let number = 8;
 
-    onMount(async () => (palette = Array(number).fill("#4c4c4c")));
+    onMount(async () => {
+        const ctx = canvas.getContext("2d")
+        ctx.fillText("Drop Image Here", 50, 50);
+    });
 
     function loadImage(e) {
         e.preventDefault();
@@ -57,6 +60,7 @@
             on:drop={loadImage}
             class="bordered"
         />
+
         <div class="color-wrapper">
             {#each palette as color}
                 <div class="color-box">
@@ -72,18 +76,12 @@
     <div class="control-area">
         <div>Tolerance</div>
         <input
-            type="number"
             name="tolerance"
             bind:value={tolerance}
             on:change={generatePalette}
         />
         <div>Colors</div>
-        <input
-            type="number"
-            name="number"
-            bind:value={number}
-            on:change={generatePalette}
-        />
+        <input name="number" bind:value={number} on:change={generatePalette} />
     </div>
 </div>
 
@@ -106,11 +104,14 @@
     .control-area {
         display: grid;
         grid-template-columns: repeat(4, min-content);
-        gap: 5px;
+        gap: 1vh;
     }
 
     input {
-        width: 10vw;
+        width: 1.3vw;
+        border-radius: 5px;
+        border: none;
+        text-align: center;
     }
 
     .color-wrapper {
