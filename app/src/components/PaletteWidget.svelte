@@ -2,6 +2,7 @@
     // @ts-nocheck
     import { ColorUtils } from "../helpers/ColorUtils.js";
     import { onMount } from "svelte";
+    let files;
     let image;
     let filePicker;
     let canvas;
@@ -55,7 +56,7 @@
 <div class="main-wrapper">
     <div class="color-input">
         
-        <input type="file" id="filePicker" bind:this={filePicker}>
+        <input type="file" id="filePicker" bind:this={filePicker} on:change={loadImage} bind:files>
         <canvas
             bind:this={canvas}
             id="dropzone"
